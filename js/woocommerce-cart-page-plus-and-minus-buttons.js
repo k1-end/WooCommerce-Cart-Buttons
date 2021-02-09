@@ -12,8 +12,8 @@
         event.preventDefault();
         input = $(this).siblings('input');
         current_value = input.attr('value');
-        min_value = input.attr('value');
-        if (current_value > 1){
+        min_value = input.attr('min');
+        if (current_value > min_value || (!min_value && current_value>1)){
           input.attr( 'value' , current_value - 1).trigger('change');
         }
       });
