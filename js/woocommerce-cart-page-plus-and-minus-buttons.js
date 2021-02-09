@@ -11,9 +11,12 @@
       $(this).click(function(event){
         event.preventDefault();
         input = $(this).siblings('input');
-        current_value = input.attr('value');
-        min_value = input.attr('min');
-        step = input.attr('step');
+        current_value = parseFloat(input.attr('value'));
+        min_value = parseFloat(input.attr('min'));
+        if (!min_value) {
+          min_value=0;
+        }
+        step = parseFloat(input.attr('step'));
         new_value = current_value - step;
         if (new_value > min_value || (!min_value && new_value>0)){
           input.attr( 'value' , new_value).trigger('change');
@@ -24,10 +27,10 @@
       $(this).click(function(event){
         event.preventDefault();
         input = $(this).siblings('input');
-        current_value = input.attr('value');
-        max_value = input.attr('max');
-        step = input.attr('step');
-        new_value = current_value - step;
+        current_value = parseFloat(input.attr('value'));
+        max_value = parseFloat(input.attr('max'));
+        step = parseFloat(input.attr('step'));
+        new_value = current_value + step;
         if (!max_value || new_value<max_value){
           input.attr('value',new_value).trigger('change');
         }
