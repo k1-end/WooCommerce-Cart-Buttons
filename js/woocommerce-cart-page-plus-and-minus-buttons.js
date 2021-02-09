@@ -13,8 +13,10 @@
         input = $(this).siblings('input');
         current_value = input.attr('value');
         min_value = input.attr('min');
-        if (current_value > min_value || (!min_value && current_value>1)){
-          input.attr( 'value' , current_value - 1).trigger('change');
+        step = input.attr('step');
+        new_value = current_value - step;
+        if (new_value > min_value || (!min_value && new_value>0)){
+          input.attr( 'value' , new_value).trigger('change');
         }
       });
     });
@@ -24,8 +26,10 @@
         input = $(this).siblings('input');
         current_value = input.attr('value');
         max_value = input.attr('max');
-        if (!max_value || current_value<max_value){
-          input.attr('value',String(parseInt(current_value)+ 1)).trigger('change');
+        step = input.attr('step');
+        new_value = current_value - step;
+        if (!max_value || new_value<max_value){
+          input.attr('value',new_value).trigger('change');
         }
       });
     });
