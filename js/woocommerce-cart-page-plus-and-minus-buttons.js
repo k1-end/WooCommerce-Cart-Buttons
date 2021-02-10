@@ -34,9 +34,13 @@
         max_value = parseFloat(input.attr('max'));
         step = parseFloat(input.attr('step'));
         new_value = current_value + step;
-        if (!max_value || new_value<max_value){
+	if(!isNaN (max_value) && new_value > max_value){
+		new_value = max_value;
+		console.log(max_value);
+	}
+        //if (new_value <= max_value){
           input.attr('value',new_value).trigger('change');
-        }
+        //}
       });
     });
   }
