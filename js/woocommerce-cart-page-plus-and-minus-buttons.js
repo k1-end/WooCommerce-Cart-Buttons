@@ -18,7 +18,10 @@
         }
         step = parseFloat(input.attr('step'));
         new_value = current_value - step;
-        if (new_value > min_value || (!min_value && new_value>0)){
+	if(new_value < min_value){
+		new_value = min_value;
+	}
+        if (new_value >= min_value ){
           input.attr( 'value' , new_value).trigger('change');
         }
       });
